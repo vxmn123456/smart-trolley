@@ -82,6 +82,26 @@
       cursor: pointer;
       font-weight: bold;
     }
+    /* Added Style for About Page */
+    #about-trolley {
+      background-color: #fff8e1;
+      padding: 20px;
+      border-left: 5px solid #ffcc00;
+    }
+    #about-trolley h2 {
+      color: #ffcc00;
+    }
+    #about-trolley p {
+      color: #444;
+    }
+    #about-trolley ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    #about-trolley ul li {
+      margin-bottom: 10px;
+      color: #444;
+    }
   </style>
 </head>
 <body>
@@ -94,6 +114,7 @@
   <a href="#" onclick="showSection('location')">Map</a>
   <a href="#" onclick="showSection('hotel')">Hotel</a>
   <a href="#" onclick="showSection('car')">Car Rental</a>
+  <a href="#" onclick="showSection('about-trolley')">About Trolley</a> <!-- New link to About Trolley -->
 </nav>
 
 <!-- Flight Info -->
@@ -143,6 +164,26 @@
   <h2>Car Rental</h2>
   <p>Need a car after landing? Reserve now.</p>
   <button class="close-btn">Coming Soon</button>
+</section>
+
+<!-- About Trolley -->
+<section id="about-trolley">
+  <h2>About Smart Airport Trolley</h2>
+  <p>Our project, the Smart Airport Trolley, is designed to enhance convenience and efficiency while traveling at the airport. The key innovation in our project is the integration of a smart weight sensor to measure baggage weight in real-time, along with features such as online booking, passenger details, reputation tracking, and a user-friendly tablet interface. The trolley is also equipped with a smart device, a built-in table, and a power outlet for charging tablets and phones.</p>
+  
+  <ul>
+    <li><strong>Smart Weight Sensor:</strong> Measures baggage weight in real-time</li>
+    <li><strong>Mobile App:</strong> Displays bag weight, barcode scanning for flight details</li>
+    <li><strong>Barcode System:</strong> Opens website with ticket info, seat number, real-time updates</li>
+    <li><strong>Tablet Interface:</strong> User-friendly selection and tracking</li>
+    <li><strong>Power & Charging:</strong></li>
+    <ul>
+      <li><strong>Power Outlets:</strong> Charge phones & tablets</li>
+      <li><strong>Secure Holders:</strong> Keep devices in place</li>
+      <li><strong>Solar Power System:</strong> 12V, 50W solar panel, 12AH battery, solar charge controller</li>
+    </ul>
+    <li><strong>Additional Features:</strong> Built-in table, real-time flight updates</li>
+  </ul>
 </section>
 
 <!-- Temporary Modal (Optional Welcome Info) -->
