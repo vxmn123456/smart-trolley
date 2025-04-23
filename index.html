@@ -6,207 +6,80 @@
   <title>Smart Airport Trolley</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-    }
-    header {
-      background-color: #ffcc00;
-      padding: 1rem;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-    }
-    nav {
-      display: flex;
-      background-color: #333;
-    }
-    nav a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-      text-align: center;
-    }
-    nav a:hover {
-      background-color: #575757;
-    }
-    section {
-      padding: 20px;
-      display: none;
-    }
-    section.active {
-      display: block;
-    }
-    .map {
-      width: 100%;
-      height: 300px;
-      background: linear-gradient(to top left, #eee, #ccc);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #444;
-      font-size: 18px;
-      margin-top: 10px;
-      text-align: center;
-      flex-direction: column;
-    }
-    .info-box {
-      background-color: #fff8e1;
-      border-left: 5px solid #ffcc00;
-      padding: 10px;
-      margin-top: 10px;
-    }
-    .modal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      display: none;
-    }
-    .modal-content {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 500px;
-      text-align: center;
-    }
-    .close-btn {
-      margin-top: 15px;
-      background-color: #ffcc00;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+    body { margin:0; font-family: Arial, sans-serif; background-color:#f9f9f9; }
+    header { background:#ffcc00; padding:1rem; text-align:center; font-size:24px; font-weight:bold; }
+    nav { display:flex; background:#333; }
+    nav a { color:#fff; padding:14px 20px; text-decoration:none; text-align:center; }
+    nav a:hover { background:#575757; }
+    section { padding:20px; display:none; }
+    section.active { display:block; }
+    .map, .info-box { background:#fff; border-radius:10px; padding:15px; margin:10px 0; box-shadow:0 0 5px rgba(0,0,0,0.1); }
+    .map { height:250px; display:flex; align-items:center; justify-content:center; font-size:18px; color:#444; background:#eee; }
+    .countdown, .info-box p { margin:5px 0; }
+    .btn, button { background:#ffcc00; border:none; padding:10px 16px; font-weight:bold; cursor:pointer; }
+    .btn:hover { background:#f4b400; }
+    .input-name { margin:10px 0; padding:8px; width:100%; font-size:16px; }
   </style>
 </head>
 <body>
 
-<header id="header-name">Welcome</header>
+<header>Smart Airport Trolley</header>
 <nav>
   <a href="#" onclick="showSection('home')">Flight Info</a>
   <a href="#" onclick="showSection('orders')">Orders</a>
-  <a href="#" onclick="showSection('weight')">Luggage Weight</a>
+  <a href="#" onclick="showSection('weight')">Luggage</a>
   <a href="#" onclick="showSection('location')">Map</a>
   <a href="#" onclick="showSection('hotel')">Hotel</a>
-  <a href="#" onclick="showSection('car')">Car Rental</a>
+  <a href="#" onclick="showSection('car')">Car</a>
+  <a href="#" onclick="showSection('about')">About Cart</a>
 </nav>
 
-<!-- Flight Info -->
 <section id="home" class="active">
   <h2>Flight Details</h2>
+  <input type="text" id="passengerName" class="input-name" placeholder="Enter your name" oninput="updateName()">
   <div class="info-box">
-    <p><strong>Name:</strong> <span id="user-name">Munira Almansoori</span></p>
+    <p><strong>Name:</strong> <span id="nameDisplay">Not set</span></p>
     <p><strong>Flight Number:</strong> A9981</p>
-    <p><strong>Destination:</strong> Abu Dhabi</p>
     <p><strong>Departure in:</strong> 3 hours</p>
-    <p><strong>Luggage Weight:</strong> 25 kg</p>
+    <p><strong>Luggage:</strong> 25 kg</p>
     <p><strong>Check-in Gate opens in:</strong> 1 hour</p>
   </div>
-  <div class="map">Your current position ➜ Gate B7</div>
+  <div class="map">Your position ➜ Gate B7</div>
 </section>
 
-<!-- Orders -->
-<section id="orders">
-  <h2>Food & Drink Orders</h2>
-  <p>Select your favorite meals from airport restaurants.</p>
-  <button class="close-btn">Coming Soon</button>
-</section>
+<section id="orders"><h2>Orders</h2><div class="map">Food services coming soon.</div></section>
+<section id="weight"><h2>Luggage Weight</h2><div class="info-box">Total: 25 kg ✅</div></section>
+<section id="location"><h2>Your Map</h2><div class="map">Airport Map illustration here</div></section>
+<section id="hotel"><h2>Hotel Booking</h2><div class="map">Hotel services coming soon.</div></section>
+<section id="car"><h2>Car Rental</h2><div class="map">Car rental options coming soon.</div></section>
 
-<!-- Weight -->
-<section id="weight">
-  <h2>Luggage Weight</h2>
+<section id="about">
+  <h2>About Smart Cart</h2>
   <div class="info-box">
-    <p>Total: 25 kg</p>
-    <p>Status: ✅ Within limit</p>
+    <p><strong>Smart Cart</strong> is a next-gen airport trolley featuring:</p>
+    <ul>
+      <li>Integrated weight sensor</li>
+      <li>Tablet interface & booking system</li>
+      <li>Built-in barcode scanner for instant flight data</li>
+      <li>Mobile app for baggage & flight status</li>
+      <li>Power outlet, device holder, solar-powered 12V 50W system</li>
+      <li>Secured data storage on server</li>
+      <li>User-friendly, compact design</li>
+      <li>Planned 5-year expansion & revenue strategy</li>
+    </ul>
   </div>
 </section>
-
-<!-- Map -->
-<section id="location">
-  <h2>Location & Navigation</h2>
-  <div class="map">
-    🧳 Your Smart Trolley is currently near Duty Free Shop → Heading to Gate B7  
-    <br>
-    📍 Location: Terminal 3, Zone C  
-    <br>
-    🛒 Trolley ID: SAT-0821
-  </div>
-</section>
-
-<!-- Hotel -->
-<section id="hotel">
-  <h2>Hotel Booking</h2>
-  <p>Need a place to rest? Book your stay now.</p>
-  <button class="close-btn">Coming Soon</button>
-</section>
-
-<!-- Car Rental -->
-<section id="car">
-  <h2>Car Rental</h2>
-  <p>Need a car after landing? Reserve now.</p>
-  <button class="close-btn">Coming Soon</button>
-</section>
-
-<!-- Welcome Modal -->
-<div class="modal" id="welcomeModal">
-  <div class="modal-content">
-    <h3>Flight Info Detected</h3>
-    <p><span id="welcome-name">Munira Almansoori</span> - Flight A9981</p>
-    <p>Destination: Abu Dhabi</p>
-    <p>Check-in gate opens in 1 hour</p>
-    <button class="close-btn" onclick="closeModal()">Close</button>
-  </div>
-</div>
-
-<!-- Name Prompt Modal -->
-<div class="modal" id="nameModal">
-  <div class="modal-content">
-    <h3>Enter Your Name</h3>
-    <input type="text" id="userNameInput" placeholder="Enter your name" style="padding:10px; width:80%;">
-    <button class="close-btn" onclick="saveUserName()">Continue</button>
-  </div>
-</div>
 
 <script>
   function showSection(id) {
-    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
-
-  function closeModal() {
-    document.getElementById('welcomeModal').style.display = 'none';
-  }
-
-  function saveUserName() {
-    const name = document.getElementById('userNameInput').value.trim();
-    if (name) {
-      localStorage.setItem('userName', name);
-      document.getElementById('header-name').textContent = `Welcome, ${name}`;
-      document.getElementById('user-name').textContent = name;
-      document.getElementById('welcome-name').textContent = name;
-      document.getElementById('nameModal').style.display = 'none';
-      document.getElementById('welcomeModal').style.display = 'flex';
-    }
-  }
-
-  window.onload = function () {
-    const name = localStorage.getItem('userName');
-    if (!name) {
-      document.getElementById('nameModal').style.display = 'flex';
-    } else {
-      document.getElementById('header-name').textContent = `Welcome, ${name}`;
-      document.getElementById('user-name').textContent = name;
-      document.getElementById('welcome-name').textContent = name;
-      document.getElementById('welcomeModal').style.display = 'flex';
-    }
+  function updateName() {
+    let name = document.getElementById('passengerName').value;
+    document.getElementById('nameDisplay').innerText = name || 'Not set';
   }
 </script>
+
 </body>
 </html>
